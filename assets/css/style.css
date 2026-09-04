@@ -616,6 +616,93 @@
     position: relative;
   }
 
+  /* Website scroll-on-hover card */
+  .web-thumb {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: #111;
+  }
+  .web-thumb img {
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: top 4s ease-in-out;
+  }
+  .web-thumb:hover img {
+    top: calc(-100% + 260px);
+  }
+  .web-thumb .web-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0);
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .web-thumb:hover .web-overlay {
+    background: rgba(0,0,0,0.18);
+  }
+  .web-thumb .web-overlay span {
+    opacity: 0;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    background: rgba(0,0,0,0.55);
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: opacity 0.3s;
+  }
+  .web-thumb:hover .web-overlay span { opacity: 1; }
+
+  /* Website lightbox */
+  #web-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+  #web-lightbox.open { display: flex; }
+  #web-lightbox .wl-inner {
+    position: relative;
+    max-width: 88vw;
+    max-height: 90vh;
+    overflow: auto;
+    border-radius: 10px;
+  }
+  #web-lightbox img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    cursor: zoom-in;
+  }
+  #web-lightbox img.zoomed {
+    width: 160%;
+    cursor: zoom-out;
+  }
+  #wl-close {
+    position: fixed;
+    top: 20px;
+    right: 28px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 34px;
+    cursor: pointer;
+    z-index: 10000;
+    line-height: 1;
+  }
+
   .project-info {
     padding: 20px;
     display: flex;
@@ -1124,6 +1211,10 @@ h1 em { font-style: italic; font-family: Georgia, "Times New Roman", serif; }
 .gallery-item:nth-child(1),
   .gallery-item:nth-child(2),
   .gallery-item:nth-child(3) { background: var(--card-bg); }
+.gallery-grid-two {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 540px;
+  }
 /* Services Section */
   .services-section {
     margin-top: 0;

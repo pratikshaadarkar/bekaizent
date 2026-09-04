@@ -33,6 +33,7 @@
     <li><button class="tab-btn" data-filter="websites">Websites Development</button></li>
     <li><button class="tab-btn" data-filter="smm">SMM</button></li>
     <li><button class="tab-btn" data-filter="ai-systems">AI Systems</button></li>
+    <li><button class="tab-btn" data-filter="ai-events">AI Events</button></li>
   </ul>
 
   <div class="projects-grid">
@@ -51,6 +52,50 @@
     </div>
 
 
+
+    <!-- Websites 1 -->
+    <div class="project-card" data-category="websites" style="cursor:pointer;" onclick="openWebLightbox('assets/images/purvaa-site-ss.png')">
+      <div class="web-thumb">
+        <img src="assets/images/purvaa-site-ss.png" alt="Purvaa Website">
+        <div class="web-overlay"><span>VIEW SITE</span></div>
+      </div>
+      <div class="project-info">
+        <h3 class="project-title">Purvaa Tours & Travels</h3>
+      </div>
+    </div>
+
+    <!-- Websites 2 -->
+    <div class="project-card" data-category="websites" style="cursor:pointer;" onclick="openWebLightbox('assets/images/tobc-site-ss.png')">
+      <div class="web-thumb">
+        <img src="assets/images/tobc-site-ss.png" alt="TOBC Website">
+        <div class="web-overlay"><span>VIEW SITE</span></div>
+      </div>
+      <div class="project-info">
+        <h3 class="project-title">TOBC Entertainment</h3>
+      </div>
+    </div>
+
+    <!-- Websites 3 -->
+    <div class="project-card" data-category="websites" style="cursor:pointer;" onclick="openWebLightbox('assets/images/dpaco-site-ss.png')">
+      <div class="web-thumb">
+        <img src="assets/images/dpaco-site-ss.png" alt="DPACO Website">
+        <div class="web-overlay"><span>VIEW SITE</span></div>
+      </div>
+      <div class="project-info">
+        <h3 class="project-title">DPACO</h3>
+      </div>
+    </div>
+
+    <!-- Websites 4 -->
+    <div class="project-card" data-category="websites" style="cursor:pointer;" onclick="openWebLightbox('assets/images/v3-site-ss.png')">
+      <div class="web-thumb">
+        <img src="assets/images/v3-site-ss.png" alt="V3 Website">
+        <div class="web-overlay"><span>VIEW SITE</span></div>
+      </div>
+      <div class="project-info">
+        <h3 class="project-title">V3 LifeCare Exim</h3>
+      </div>
+    </div>
 
     <!-- SMM Project 1 -->
     <a href="/sj-capital-financial-services" class="project-card" data-category="smm" style="text-decoration: none; color: inherit;">
@@ -120,6 +165,17 @@
     </a>
 
 
+
+    <!-- AI Events 1 - Founders Workshop -->
+    <a href="/ai-founders-workshop" class="project-card" data-category="ai-events" style="text-decoration:none;color:inherit;">
+      <div class="project-image" style="width:100%;height:240px;overflow:hidden;"><img src="assets/images/mulund-session-4.JPG" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="project-info">
+        <h3 class="project-title">Hands-on AI Workshop With 5 Founders</h3>
+        <div class="project-meta">
+          <span>AI EVENTS 2026</span>
+        </div>
+      </div>
+    </a>
 
     <!-- Short Form Content 1 -->
     <div class="project-card" data-category="short-form">
@@ -503,6 +559,35 @@
 <script async src="https://www.instagram.com/embed.js"></script>
 
 <!-- Video Modal -->
+<!-- Website Lightbox -->
+<div id="web-lightbox" onclick="if(event.target===this)closeWebLightbox()">
+  <button id="wl-close" onclick="closeWebLightbox()">&#10005;</button>
+  <div class="wl-inner">
+    <img id="wl-img" src="" alt="" onclick="toggleZoom(this)">
+  </div>
+</div>
+
+<script>
+  function openWebLightbox(src) {
+    var lb = document.getElementById('web-lightbox');
+    var img = document.getElementById('wl-img');
+    img.src = src;
+    img.classList.remove('zoomed');
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeWebLightbox() {
+    document.getElementById('web-lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function toggleZoom(img) {
+    img.classList.toggle('zoomed');
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeWebLightbox();
+  });
+</script>
+
 <div id="videoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; align-items:center; justify-content:center;">
   <div style="position:relative; width:90%; max-width:800px; aspect-ratio:16/9; background:black;">
     <iframe id="videoIframe" style="width:100%; height:100%; border:none;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>

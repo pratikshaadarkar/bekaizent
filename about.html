@@ -33,11 +33,61 @@
   <div class="gallery-section">
     <h2>Behind The <em>Scenes</em></h2>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="assets/images/gallery1.jpg" alt="Behind the scenes 1" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="assets/images/gallery2.jpg" alt="Behind the scenes 2" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div class="gallery-item"><img src="assets/images/gallery3.JPG" alt="Behind the scenes 3" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" onclick="openLightbox(0)"><img src="assets/images/gallery1.jpg" alt="Behind the scenes 1" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" onclick="openLightbox(1)"><img src="assets/images/gallery2.jpg" alt="Behind the scenes 2" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" onclick="openLightbox(2)"><img src="assets/images/gallery3.JPG" alt="Behind the scenes 3" style="width:100%;height:100%;object-fit:cover;"></div>
+    </div>
+    <div class="gallery-grid gallery-grid-two">
+      <div class="gallery-item" onclick="openLightbox(3)"><img src="assets/images/mulund-session-1.JPG" alt="Mulund session 1" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="gallery-item" onclick="openLightbox(4)"><img src="assets/images/mulund-session-2.JPG" alt="Mulund session 2" style="width:100%;height:100%;object-fit:cover;"></div>
     </div>
   </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;">
+    <button onclick="closeLightbox()" style="position:absolute;top:20px;right:28px;background:none;border:none;color:#fff;font-size:36px;cursor:pointer;line-height:1;">&#10005;</button>
+    <button onclick="shiftLightbox(-1)" style="position:absolute;left:20px;background:none;border:none;color:#fff;font-size:52px;cursor:pointer;line-height:1;padding:0 12px;">&#8249;</button>
+    <img id="lightbox-img" src="" alt="" style="max-width:90vw;max-height:88vh;object-fit:contain;border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,0.5);">
+    <button onclick="shiftLightbox(1)" style="position:absolute;right:20px;background:none;border:none;color:#fff;font-size:52px;cursor:pointer;line-height:1;padding:0 12px;">&#8250;</button>
+  </div>
+
+  <script>
+    var galleryImages = [
+      'assets/images/gallery1.jpg',
+      'assets/images/gallery2.jpg',
+      'assets/images/gallery3.JPG',
+      'assets/images/mulund-session-1.JPG',
+      'assets/images/mulund-session-2.JPG'
+    ];
+    var currentIndex = 0;
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = galleryImages[currentIndex];
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function shiftLightbox(dir) {
+      currentIndex = (currentIndex + dir + galleryImages.length) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentIndex];
+    }
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'ArrowLeft') shiftLightbox(-1);
+        if (e.key === 'ArrowRight') shiftLightbox(1);
+        if (e.key === 'Escape') closeLightbox();
+      }
+    });
+  </script>
 
 </div>
 
