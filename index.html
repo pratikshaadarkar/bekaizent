@@ -611,11 +611,7 @@
       font-weight: 500;
     }
     @media (max-width: 720px) {
-      .about-layout { grid-template-columns: 1fr; }
-      .about-tags-col { flex-direction: row; flex-wrap: wrap; }
-      .about-tags-col.right { align-items: flex-start; }
-      .about-tags-col .atag,
-      .about-tags-col.right .atag { transform: none; }
+      .about-layout { grid-template-columns: 1fr; gap: 24px; }
     }
 
     /* ─── HOW IT WORKS ───────────────────────────────────── */
@@ -1231,8 +1227,8 @@
       .nav-logo img { height: 55px; }
       .footer-logo-img { height: 55px; }
 
-      /* Hero */
-      .hero-hi { margin-top: 80px; }
+      /* Hero — add side breathing room */
+      .hero-hi { margin-top: 80px; padding-inline: 20px; }
 
       /* Video */
       .video-section { padding-block: 24px; }
@@ -1241,6 +1237,11 @@
       /* Pitch */
       .pitch { padding-block: 64px; }
       .pitch-inner { gap: 36px; }
+
+      /* Pitch badge — shrink on mobile */
+      .pitch-free-badge { width: 80px; height: 80px; }
+      .pitch-free-badge span:first-child { font-size: 1.2rem !important; }
+      .pitch-free-badge span:last-child  { font-size: 0.6rem !important; }
 
       /* About */
       .about { padding-block: 64px; }
@@ -1252,7 +1253,9 @@
       /* Bio */
       .bio { padding-block: 64px; }
       .bio-heading { margin-bottom: 36px; }
-      .bio-photo-card { max-height: 380px; }
+      .bio-photo-card { max-height: none; max-width: 320px; margin-inline: auto; }
+      .bio-photo-meta { flex-direction: column; align-items: center; gap: 10px; }
+      .bio-name-block { text-align: center; }
 
       /* Calendly */
       .calendly-section { padding-block: 48px; }
@@ -1262,6 +1265,17 @@
 
       /* Pitch CTA buttons */
       .pitch-cta { width: 100%; box-sizing: border-box; }
+
+      /* About tags — show inline and centered */
+      .about-layout { padding-inline: 12px; }
+      .about-tags-col { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      .about-tags-col.right { align-items: center; }
+      .about-tags-col:not(.right) .atag:nth-child(1),
+      .about-tags-col:not(.right) .atag:nth-child(2),
+      .about-tags-col.right .atag:nth-child(1),
+      .about-tags-col.right .atag:nth-child(2) { transform: none; }
+      .atag { font-size: 0.78rem; padding: 7px 14px 7px 7px; }
+
     }
 
     /* ─── SMALL MOBILE ───────────────────────────────── */
@@ -1270,7 +1284,7 @@
       .nav-inner { padding-inline: 16px; }
 
       /* Hero - ensure text doesn't overflow */
-      .hero-hi { font-size: clamp(1.7rem, 7vw, 3rem); }
+      .hero-hi { font-size: clamp(1.7rem, 7vw, 3rem); padding-inline: 16px; }
       .hero-role { font-size: clamp(1.7rem, 7.5vw, 3.2rem); }
 
       /* Works */
@@ -1283,7 +1297,6 @@
       .exp-row { grid-template-columns: 1fr auto; }
 
       /* About */
-      .about-layout { gap: 24px; }
       .about-quote { font-size: 1.2rem; }
 
       /* Calendly responsive height */
@@ -1339,7 +1352,7 @@
 <section class="hero-section">
 
   <h1 class="hero-hi">We build your landing page first.<br><span style="font-family:var(--font-serif);font-style:italic;font-weight:700;">You decide after.</span></h1>
-  <p style="font-family:var(--font-body);font-size:clamp(1rem,1.8vw,1.2rem);color:var(--fg-muted);text-align:center;max-width:620px;margin:20px auto 0;line-height:1.65;position:relative;z-index:3;">Websites and copy for healthcare, construction and export businesses. See your landing page before you pay a penny.</p>
+  <p class="hero-sub" style="font-family:var(--font-body);font-size:clamp(1rem,1.8vw,1.2rem);color:var(--fg-muted);text-align:center;max-width:620px;margin:20px auto 0;line-height:1.65;position:relative;z-index:3;padding-inline:20px;">Websites and copy for healthcare, construction and export businesses. See your landing page before you pay a penny.</p>
 
 </section>
 
@@ -1372,6 +1385,7 @@
         opacity: 0; transition: opacity 0.25s;
       }
       .vp-wrap:hover .vp-controls { opacity: 1; }
+      @media (max-width: 768px) { .vp-controls { opacity: 1; } }
       .vp-btn {
         background: none; border: none; cursor: pointer; padding: 0;
         color: #fff; display: flex; align-items: center; flex-shrink: 0;
