@@ -1266,14 +1266,10 @@
       /* Pitch CTA buttons */
       .pitch-cta { width: 100%; box-sizing: border-box; }
 
-      /* About tags — show inline and centered */
+      /* About tags — show inline and centered, keep rotations */
       .about-layout { padding-inline: 12px; }
       .about-tags-col { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 8px; }
       .about-tags-col.right { align-items: center; }
-      .about-tags-col:not(.right) .atag:nth-child(1),
-      .about-tags-col:not(.right) .atag:nth-child(2),
-      .about-tags-col.right .atag:nth-child(1),
-      .about-tags-col.right .atag:nth-child(2) { transform: none; }
       .atag { font-size: 0.78rem; padding: 7px 14px 7px 7px; }
 
     }
