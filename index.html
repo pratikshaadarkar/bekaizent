@@ -956,6 +956,22 @@
       font-size: 0.78rem;
       color: var(--fg-faint);
     }
+    .wr-screenshot-wrap {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-top: 8px;
+    }
+    .wr-screenshot-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+      max-height: 420px;
+    }
 
     /* ─── BIO / EXPERIENCE ───────────────────────────────── */
     .bio {
@@ -1622,6 +1638,9 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <p class="wr-quote">"Pratiksha did a great job redesigning our website. Earlier customers could see our destinations and services but they didn't get enough information about the actual tours. Now they can easily explore our packages, see the trip details, understand what's included and contact us directly for enquiries on WhatsApp. The website now represents our travel business much better and gives our customers a much clearer idea of what we offer."</p>
+          <div class="wr-screenshot-wrap">
+            <img src="assets/images/arun-testimonial.png" alt="WhatsApp message from Arun Rane" loading="lazy">
+          </div>
           <p class="wr-client-name">Arun M. Rane</p>
           <p class="wr-client-role">Purvaa Tours &amp; Travels, Chembur</p>
         </div>
